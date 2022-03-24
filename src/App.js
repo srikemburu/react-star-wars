@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React from 'react'
+import { List } from "./components/List"
+import { fetchData } from "./services/Sw-api"
+import { useState } from "react"
+import { useEffect } from "react"
+// import './App.css';
+
 
 function App() {
+  const [ships, setShips] = useState([])
+
+  useEffect(() => {
+    fetchData().then(response => setShips(response.results))
+  },[])
+  console.log(ships)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <List ships={ships} />
     </div>
-  );
+  )
 }
 
 export default App;
