@@ -4,7 +4,6 @@
 
   export const fetchData = async () => {
     try 
-    
     {
       const response = await fetch("https://swapi.dev/api/starships/") 
       console.log(response);

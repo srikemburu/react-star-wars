@@ -1,10 +1,10 @@
 
 import React from 'react'
-import { List } from "./components/List"
+import List from "./components/List"
 import { fetchData } from "./services/Sw-api"
 import { useState } from "react"
 import { useEffect } from "react"
-// import './App.css';
+import './app.css';
 
 
 function App() {
@@ -15,9 +15,16 @@ function App() {
   },[])
   console.log(ships)
   return (
-    <div>
-      <List ships={ships} />
-    </div>
+    <React.Fragment>
+       <h1>STARWARS STARSHIPS</h1>
+        <div >
+          <ul>             
+            {ships.map(ship =>
+              <List ship= {ship} />
+            )}
+          </ul>
+        </div>
+    </React.Fragment>
   )
 }
 
